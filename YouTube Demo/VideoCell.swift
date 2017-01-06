@@ -30,11 +30,11 @@ class VideoCell: BaseCell {
             
             // Measure text
             if let title = video?.title {
-                let size = CGSize(width: frame.width - 16 - 44 - 8 - 16, height: 9999999)
-                let options = NSStringDrawingOptions.usesFontLeading.union(.usesFontLeading)
-                let estimatedRect = NSString(string: title).boundingRect(with: size, options: options, attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 14)], context: nil)
+                let size = CGSize(width: frame.width - 16 - 44 - 8 - 16, height: 1000)
+                let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
+                let estimatedRect = NSString(string: title).boundingRect(with: size, options: options, attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 17)], context: nil)
                 
-                if estimatedRect.size.height > 20 {
+                if round(estimatedRect.size.height) > 20 {
                     titleLabelHeightConstraint?.constant = 44
                 } else {
                     titleLabelHeightConstraint?.constant = 20
@@ -43,8 +43,6 @@ class VideoCell: BaseCell {
             
         }
     }
-    
-    var titleLabelHeightConstraint: NSLayoutConstraint?
     
     let thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
@@ -72,6 +70,7 @@ class VideoCell: BaseCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "The Weeknd - Starboy (official) ft. Daft Punk"
+        label.numberOfLines = 2
         return label
     }()
     
@@ -84,6 +83,8 @@ class VideoCell: BaseCell {
         return textView
     }()
     
+    var titleLabelHeightConstraint: NSLayoutConstraint?
+
     override func setupViews() {
         super.setupViews()
         
