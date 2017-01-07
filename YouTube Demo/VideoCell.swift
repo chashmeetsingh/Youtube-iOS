@@ -56,8 +56,8 @@ class VideoCell: BaseCell {
         }
     }
     
-    let thumbnailImageView: UIImageView = {
-        let imageView = UIImageView()
+    let thumbnailImageView: CustomImageView = {
+        let imageView = CustomImageView()
         imageView.image = UIImage(named: "starboy_the_weeknd")
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
@@ -70,8 +70,8 @@ class VideoCell: BaseCell {
         return view
     }()
     
-    let userProfileImagView: UIImageView = {
-        let imageView = UIImageView()
+    let userProfileImagView: CustomImageView = {
+        let imageView = CustomImageView()
         imageView.image = UIImage(named: "starboy")
         imageView.layer.cornerRadius = 22
         imageView.layer.masksToBounds = true
