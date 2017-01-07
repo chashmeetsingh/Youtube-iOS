@@ -13,11 +13,10 @@ class VideoCell: BaseCell {
     var video: Video? {
         didSet {
             titleLabel.text = video?.title
-            thumbnailImageView.image = UIImage(named: (video?.thumnnailImageName)!)
             
-            if let profileImage = video?.channel?.profileImagename {
-                userProfileImagView.image = UIImage(named: profileImage)
-            }
+            setupThumbnailImage()
+            
+            setupProfileImage()
             
             if let channelName = video?.channel?.name, let numberOfViews = video?.numberOfViews {
                 
@@ -44,6 +43,19 @@ class VideoCell: BaseCell {
         }
     }
     
+    func setupProfileImage() {
+        if let profileImageUrl = video?.channel?.profileImagename {
+            self.userProfileImagView.loadImageUsingUrlString(profileImageUrl)
+            
+        }
+    }
+    
+    func setupThumbnailImage() {
+        if let thumbnailImageUrl = video?.thumnnailImageName {
+            self.thumbnailImageView.loadImageUsingUrlString(thumbnailImageUrl)
+        }
+    }
+    
     let thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "starboy_the_weeknd")
@@ -63,6 +75,7 @@ class VideoCell: BaseCell {
         imageView.image = UIImage(named: "starboy")
         imageView.layer.cornerRadius = 22
         imageView.layer.masksToBounds = true
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     

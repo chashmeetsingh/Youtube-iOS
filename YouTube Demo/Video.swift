@@ -13,6 +13,7 @@ class Video: NSObject {
     var thumnnailImageName: String?
     var title: String?
     var numberOfViews: NSNumber?
+    var duration: NSNumber?
     
     var channel: Channel?
     
