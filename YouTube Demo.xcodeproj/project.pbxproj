@@ -25,6 +25,7 @@
 		6DB2E39E1E26A60F00A524B7 /* SubscriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB2E39D1E26A60F00A524B7 /* SubscriptionCell.swift */; };
 		6DB954351E21AD0D00534313 /* SettingsLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB954341E21AD0D00534313 /* SettingsLauncher.swift */; };
 		6DB954371E21BAD100534313 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB954361E21BAD100534313 /* SettingsCell.swift */; };
+		6DC53AE01E47547D007DA42D /* SafeJsonObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC53ADF1E47547D007DA42D /* SafeJsonObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		6DB2E39D1E26A60F00A524B7 /* SubscriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionCell.swift; sourceTree = "<group>"; };
 		6DB954341E21AD0D00534313 /* SettingsLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsLauncher.swift; sourceTree = "<group>"; };
 		6DB954361E21BAD100534313 /* SettingsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
+		6DC53ADF1E47547D007DA42D /* SafeJsonObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeJsonObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 			children = (
 				6D7533AE1E1FEE7900C7C210 /* Video.swift */,
 				6D7533B01E1FF13E00C7C210 /* Channel.swift */,
+				6DC53ADF1E47547D007DA42D /* SafeJsonObject.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 				6D7533B11E1FF13E00C7C210 /* Channel.swift in Sources */,
 				6D277BBF1E1FD41800FC3468 /* MenuBar.swift in Sources */,
 				6DB954371E21BAD100534313 /* SettingsCell.swift in Sources */,
+				6DC53AE01E47547D007DA42D /* SafeJsonObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

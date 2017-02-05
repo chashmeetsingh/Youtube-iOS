@@ -15,7 +15,7 @@ class ApiService: NSObject {
     let baseUrl = "https://s3-us-west-2.amazonaws.com/youtubeassets"
     
     func fetchVideos(completion: @escaping ([Video]) -> Void) {
-        fetchVideosForUrl(url: "\(baseUrl)/home.json", completion: completion)
+        fetchVideosForUrl(url: "\(baseUrl)/home_num_likes.json", completion: completion)
     }
     
     func fetchTrendingFeed(completion: @escaping ([Video]) -> Void) {
@@ -30,36 +30,19 @@ class ApiService: NSObject {
         let url = URL(string: url)
         URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
             
-            if error != nil {
-                print(error ?? "error")
+            if let error = error {
+                print(error)
                 return
             }
             
             do {
-                let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
-                
-                var videos = [Video]()
-                
-                for dictionary in json as! [[String : AnyObject]] {
-                    let video = Video()
-                    video.title = dictionary["title"] as? String
-                    video.numberOfViews = dictionary["number_of_views"] as? NSNumber
-                    video.duration = dictionary["duration"] as? NSNumber
-                    video.thumnnailImageName = dictionary["thumbnail_image_name"] as? String
+                if let data = data,
+                    let jsonDictionaries = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [[String : AnyObject]] {
                     
-                    let channelDictionary = dictionary["channel"] as! [String : AnyObject]
+                    DispatchQueue.main.async {
+                        completion(jsonDictionaries.map({return Video(dictionary: $0)}))
+                    }
                     
-                    let channel = Channel()
-                    channel.name = channelDictionary["name"] as? String
-                    channel.profileImagename = channelDictionary["profile_image_name"] as? String
-                    
-                    video.channel = channel
-                    
-                    videos.append(video)
-                }
-                
-                DispatchQueue.main.async {
-                    completion(videos)
                 }
                 
             } catch let jsonError {
