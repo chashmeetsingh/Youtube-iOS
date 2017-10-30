@@ -1,5 +1,7 @@
 # Youtube-iOS
 
+A clone of the Youtube app for iOS. Basic stuff works.
+
 ### Screenshots
 
 ##### Iteration 1
